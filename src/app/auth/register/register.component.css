@@ -1,7 +1,7 @@
 .container {
-    width: 70%;
-    padding: 2em;
-    margin: 2em auto;
+  width: 70%;
+  padding: 2em;
+  margin: 2em auto;
 }
 
 .field {
@@ -12,4 +12,8 @@
 button {
   width: 100%;
   padding: .5em;
+}
+
+.spinner {
+  margin: 0 auto;
 }

@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!loading">
     <mat-form-field class="field">
       <mat-label>Enter your e-mail</mat-label>
       <input matInput formControlName="email">
@@ -12,4 +12,5 @@
 
     <button mat-button color="primary">Login</button>
   </form>
+  <mat-spinner class="spinner" *ngIf="loading"></mat-spinner>
 </div>
