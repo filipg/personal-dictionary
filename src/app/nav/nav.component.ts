@@ -9,7 +9,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit, OnDestroy{
+export class NavComponent implements OnInit, OnDestroy {
 
   isAuthenticated: boolean;
   userSubscription: Subscription;
@@ -28,13 +28,11 @@ export class NavComponent implements OnInit, OnDestroy{
     ngOnInit() {
       this.userSubscription = this.authService.user.subscribe(user => {
         this.isAuthenticated = !!user;
-        console.log(!user);
-        console.log(!!user);
       });
     }
 
     ngOnDestroy() {
-
+      this.userSubscription.unsubscribe();
     }
 
 }
