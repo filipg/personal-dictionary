@@ -20,7 +20,7 @@ export class WordsComponent implements OnInit {
   }
 
   private getWords() {
-    this.dataService.getWords().subscribe(data => this.words = data);
+    this.dataService.getWords().subscribe(data => console.log(data));
   }
 
 }
