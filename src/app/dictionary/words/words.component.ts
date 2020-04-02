@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { Word } from 'src/app/interfaces/word.interface';
 
 @Component({
   selector: 'app-words',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WordsComponent implements OnInit {
 
-  constructor() { }
+  words: Word[] = [];
+
+  constructor(
+    private dataService: DataService
+  ) { }
 
   ngOnInit() {
+    this.getWords();
+  }
+
+  private getWords() {
+    this.dataService.getWords().subscribe(data => this.words = data);
   }
 
 }

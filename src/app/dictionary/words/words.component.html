@@ -1,1 +1,5 @@
-<p>words works!</p>
+<div class="container">
+    <div *ngFor="let word of words">
+        <div>{{word.wordInEnglish}}: {{word.translation}}</div>
+    </div>
+</div>
