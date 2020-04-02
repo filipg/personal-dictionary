@@ -1,1 +1,15 @@
-<p>add-word works!</p>
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="field-one">
+          <mat-label>Word to translate</mat-label>
+          <input matInput formControlName="wordInEnglish">
+        </mat-form-field>
+          
+        <mat-form-field appearance="outline" class="field-two">
+          <mat-label>Translations</mat-label>
+          <input matInput formControlName="translation">
+        </mat-form-field>
+    
+        <button mat-stroked-button type="submit" color="primary">Save word</button>
+    </form>
+</div>

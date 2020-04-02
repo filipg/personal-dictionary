@@ -20,4 +20,8 @@ export class DataService {
   getWords(): Observable<Word[]> {
     return of(this.words);
   }
+
+  saveWord(word: Word) {
+    console.log(word);
+  }
 }
