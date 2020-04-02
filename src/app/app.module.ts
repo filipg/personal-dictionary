@@ -14,6 +14,10 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthInterceptorService } from './auth/auth-interceptor';
+import { AddWordComponent } from './dictionary/add-word/add-word.component';
+import { WordsComponent } from './dictionary/words/words.component';
+import { TestYourselfComponent } from './dictionary/test-yourself/test-yourself.component';
+import { ResultsComponent } from './dictionary/results/results.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { AuthInterceptorService } from './auth/auth-interceptor';
     NavComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddWordComponent,
+    WordsComponent,
+    TestYourselfComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
