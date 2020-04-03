@@ -10,6 +10,10 @@ import { Word } from 'src/app/interfaces/word.interface';
 export class WordsComponent implements OnInit {
 
   words: Word[] = [];
+  pageIndex = 0;
+  pageSize = 15;
+  lowValue = 0;
+  highValue = 15;
 
   constructor(
     private dataService: DataService
@@ -37,5 +41,18 @@ export class WordsComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+  }
+
+  getPaginatorData(event) {
+    console.log(event);
+    if (event.pageIndex === this.pageIndex + 1) {
+       this.lowValue = this.lowValue + this.pageSize;
+       this.highValue =  this.highValue + this.pageSize;
+      }
+   else if (event.pageIndex === this.pageIndex - 1) {
+      this.lowValue = this.lowValue - this.pageSize;
+      this.highValue =  this.highValue - this.pageSize;
+     }
+    this.pageIndex = event.pageIndex;
   }
 }

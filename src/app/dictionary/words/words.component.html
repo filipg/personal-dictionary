@@ -1,6 +1,6 @@
 <div class="container">
     <mat-list role="list">
-        <mat-list-item role="listitem" *ngFor="let word of words; let i = index" class="list-item">
+        <mat-list-item role="listitem" *ngFor="let word of words | slice: lowValue : highValue; let i = index " class="list-item">
             <div class="wordToTranslate">
                 {{word.wordInEnglish}} -
             </div>
@@ -12,4 +12,11 @@
             <mat-divider></mat-divider>
         </mat-list-item>
     </mat-list>
+
+    <mat-paginator 
+        [length]="words.length" 
+        [pageSize]="pageSize" 
+        (page)="pageEvent = getPaginatorData($event)"
+        class="paginator">
+    </mat-paginator> 
 </div>

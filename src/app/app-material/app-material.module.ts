@@ -9,6 +9,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [],
@@ -22,7 +23,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    MatTabsModule
+    MatTabsModule,
+    MatPaginatorModule
   ],
   exports: [
     MatButtonModule,
@@ -33,7 +35,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    MatTabsModule
+    MatTabsModule,
+    MatPaginatorModule
   ]
 })
 export class AppMaterialModule { }

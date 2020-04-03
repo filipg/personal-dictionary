@@ -1,7 +1,9 @@
 .container {
     width: 90%;
+    min-height: 730px;
     padding: 1em;
     margin: 1em auto;
+    position: relative;
 }
 
 .wordToTranslate {
@@ -28,4 +30,10 @@
 
 .icon:hover {
     transform: scale(1.5);
+}
+
+.paginator {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
