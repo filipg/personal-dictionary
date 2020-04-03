@@ -7,15 +7,18 @@
         
       <mat-form-field class="field">
         <mat-label>Enter your password</mat-label>
-        <input matInput formControlName="password">
+        <input type="password" matInput formControlName="password">
       </mat-form-field>
 
       <mat-form-field class="field">
         <mat-label>Confirm password</mat-label>
-        <input matInput formControlName="confirm">
+        <input type="password" matInput formControlName="confirm" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="form.hasError('notSame')">
+          Passwords do not match
+        </mat-error>  
       </mat-form-field>
   
-      <button mat-button color="primary">Register</button>
+      <button mat-button color="primary" [disabled]='!form.valid'>Register</button>
     </form>
     <mat-spinner class="spinner" *ngIf="loading"></mat-spinner>
 </div>
