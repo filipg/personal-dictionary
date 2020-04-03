@@ -2,13 +2,17 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!loading">
     <mat-form-field class="field">
       <mat-label>Enter your e-mail</mat-label>
-      <input matInput formControlName="email">
+      <input matInput formControlName="email" required>
     </mat-form-field>
       
     <mat-form-field class="field">
       <mat-label>Enter your password</mat-label>
-      <input type="password" matInput formControlName="password">
+      <input type="password" matInput formControlName="password" required>
     </mat-form-field>
+    
+    <p class="error">
+      {{error}}
+    </p>
 
     <button mat-button color="primary">Login</button>
   </form>

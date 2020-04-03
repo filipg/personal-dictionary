@@ -2,21 +2,25 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!loading">
       <mat-form-field class="field">
         <mat-label>Enter your e-mail</mat-label>
-        <input matInput formControlName="email">
+        <input matInput formControlName="email" required email>
       </mat-form-field>
         
       <mat-form-field class="field">
         <mat-label>Enter your password</mat-label>
-        <input type="password" matInput formControlName="password">
+        <input type="password" matInput formControlName="password" required minlength="6">
       </mat-form-field>
 
       <mat-form-field class="field">
         <mat-label>Confirm password</mat-label>
-        <input type="password" matInput formControlName="confirm" [errorStateMatcher]="matcher">
+        <input type="password" matInput formControlName="confirm" [errorStateMatcher]="matcher" required>
         <mat-error *ngIf="form.hasError('notSame')">
           Passwords do not match
         </mat-error>  
       </mat-form-field>
+
+      <p class="error">
+        {{error}}
+      </p>
   
       <button mat-button color="primary" [disabled]='!form.valid'>Register</button>
     </form>

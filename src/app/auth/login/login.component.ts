@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
   loading: boolean;
+  error = null;
 
   constructor(
     private fb: FormBuilder,
@@ -33,12 +34,11 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.loading = true;
     this.authService.login(this.form.value.email, this.form.value.password).subscribe(data => {
-      console.log(data);
       this.loading = false;
       this.router.navigate(['/dashboard']);
-    }, error => {
-      console.log(error);
-      // toDo: error handling
+    }, errorMessage => {
+      this.loading = false;
+      this.error = errorMessage;
     });
   }
 

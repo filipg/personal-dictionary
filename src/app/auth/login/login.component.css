@@ -17,3 +17,9 @@ button {
 .spinner {
   margin: 0 auto;
 }
+
+.error {
+  color: red;
+  padding: .5em;
+  margin: .5em;
+}

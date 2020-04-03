@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AuthResponse } from '../interfaces/auth-response';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { User } from '../models/user';
@@ -27,7 +27,7 @@ export class AuthService {
       password,
       returnSecureToken: true
     }).pipe(
-      catchError(errorResp => throwError(errorResp)),
+      catchError(this.handleError),
       tap(resData => this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn))
     );
   }
@@ -39,7 +39,7 @@ export class AuthService {
       password,
       returnSecureToken: true
     }).pipe(
-      catchError(errorResp => throwError(errorResp)),
+      catchError(this.handleError),
       tap(resData => this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn))
     );
   }
@@ -88,6 +88,25 @@ export class AuthService {
     this.user.next(user);
     this.autoLogout(expiresIn * 1000);
     localStorage.setItem('userData', JSON.stringify(user));
+  }
+
+  private handleError(errorResp: HttpErrorResponse) {
+    let errorMessage = 'An unknown error occurrd';
+    if (!errorResp.error || !errorResp.error.error) {
+      return throwError(errorMessage);
+    }
+    switch (errorResp.error.error.message) {
+      case 'EMAIL_EXISTS':
+        errorMessage = 'This email exists already';
+        break;
+      case 'EMAIL_NOT_FOUND': 
+        errorMessage = 'This email does not exist';
+        break;
+      case 'INVALID_PASSWORD':
+        errorMessage = 'This password is not correct';
+        break;
+    }
+    return throwError(errorMessage);
   }
 
 }
