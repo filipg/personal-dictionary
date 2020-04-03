@@ -30,7 +30,7 @@ export class AddWordComponent implements OnInit {
 
   onSubmit() {
     const translations: string[] = this.form.value.translation.split(/,|;| /);
-    const wordToPost: Word = {wordInEnglish: this.form.value.wordInEnglish, translation: translations};
+    const wordToPost: Word = {wordInEnglish: this.form.value.wordInEnglish, translation: translations, learned: false};
     this.dataService.saveWord(wordToPost).subscribe(data => console.log(data));
     this.form.reset();
     Object.keys(this.form.controls).forEach(key => {

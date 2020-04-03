@@ -1,0 +1,31 @@
+.container {
+    width: 90%;
+    padding: 1em;
+    margin: 1em auto;
+}
+
+.wordToTranslate {
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.list-item:hover {
+    background-color: #eeeeee;
+} 
+
+.spacer {
+    flex: 1 1 auto;
+  }
+
+  .icon {
+      cursor: pointer;
+      opacity: 0;
+  }
+
+  .list-item:hover .icon {
+    opacity: 1;
+} 
+
+.icon:hover {
+    transform: scale(1.5);
+}

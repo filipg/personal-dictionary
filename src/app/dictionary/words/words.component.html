@@ -1,5 +1,15 @@
 <div class="container">
-    <div *ngFor="let word of words">
-        <div>{{word.wordInEnglish}}: {{word.translation}}</div>
-    </div>
+    <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let word of words; let i = index" class="list-item">
+            <div class="wordToTranslate">
+                {{word.wordInEnglish}} -
+            </div>
+             <div *ngFor="let translation of word.translation"> 
+                <span>&nbsp; {{translation}} </span>
+            </div>
+            <span class="spacer"></span>
+            <span class="material-icons icon" (click)="deleteWord(word.id, i)">clear</span>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-list>
 </div>
