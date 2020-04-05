@@ -1,7 +1,9 @@
 export interface AbcdQuizItem {
     question: string;
-    options: {
-        name: string;
-        correctAnswer: boolean;
-    }[];
+    options: QuizItem[];
+}
+
+export interface QuizItem {
+    name: string;
+    correctAnswer: boolean;
 }

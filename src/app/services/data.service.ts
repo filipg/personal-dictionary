@@ -3,7 +3,8 @@ import { Word } from '../interfaces/word.interface';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { switchMap, take, map, tap } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
+import { QuizItem } from '../interfaces/quiz.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -49,7 +50,7 @@ export class DataService {
   }
 
   getRandomEnglishWords(numberOfWords: number) {
-    return this.http.get(`https://api.allorigins.win/raw?url=https://random-word-api.herokuapp.com/word?number=${numberOfWords*3}`)
+    return this.http.get(`https://api.allorigins.win/raw?url=https://random-word-api.herokuapp.com/word?number=${numberOfWords * 3}`)
       .pipe(
         map((data: string[]) => data.map(el => {
           return {
@@ -58,5 +59,19 @@ export class DataService {
           };
         }))
       );
+  }
+
+  // #################
+  polishWords = ["dobrze", "stół", "krzesło", "tablet", "kubek", "długopis", "pióro", 'okej', 'jest'];
+  getPolishWords(size: number = 2): Observable<QuizItem[]> {
+    return of(this.polishWords).pipe(
+      map(words => words.sort(() => 0.5 - Math.random()).slice(0, size * 3)),
+      map((data: string[]) => data.map(el => {
+        return {
+          name: el,
+          correctAnswer: false
+        };
+      })),
+    );
   }
 }
