@@ -23,6 +23,9 @@
         </div>
     </div>
     <ng-template #testMode>   
-        Another magic element!
+        <app-quiz
+            [words]="words"
+            [abcdQuiz]="isAbcdQuiz"
+        ></app-quiz>
     </ng-template>
 </div>

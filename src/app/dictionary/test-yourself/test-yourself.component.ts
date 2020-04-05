@@ -12,6 +12,7 @@ export class TestYourselfComponent implements OnInit {
   selectionMode = true;
   enoughElements: boolean;
   words: Word[] = [];
+  isAbcdQuiz: boolean;
 
   constructor(
     private dataService: DataService
@@ -28,9 +29,9 @@ export class TestYourselfComponent implements OnInit {
     });
   }
 
-  modeSelection(abcdTest: boolean) {
-    console.log(abcdTest);
+  modeSelection(abcdQuiz: boolean) {
     this.selectionMode = false;
+    this.isAbcdQuiz = abcdQuiz;
   }
 
 }

@@ -18,6 +18,7 @@ import { AddWordComponent } from './dictionary/add-word/add-word.component';
 import { WordsComponent } from './dictionary/words/words.component';
 import { TestYourselfComponent } from './dictionary/test-yourself/test-yourself.component';
 import { ResultsComponent } from './dictionary/results/results.component';
+import { QuizComponent } from './dictionary/test-yourself/quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ResultsComponent } from './dictionary/results/results.component';
     AddWordComponent,
     WordsComponent,
     TestYourselfComponent,
-    ResultsComponent
+    ResultsComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
