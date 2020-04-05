@@ -47,4 +47,16 @@ export class DataService {
       switchMap(user => this.http.delete(`https://hopeful-theorem-196709.firebaseio.com/${user.id}/dictionary/${id}.json`))
     );
   }
+
+  getRandomEnglishWords(numberOfWords: number) {
+    return this.http.get(`https://api.allorigins.win/raw?url=https://random-word-api.herokuapp.com/word?number=${numberOfWords*3}`)
+      .pipe(
+        map((data: string[]) => data.map(el => {
+          return {
+            name: el,
+            correctAnswer: false
+          };
+        }))
+      );
+  }
 }
