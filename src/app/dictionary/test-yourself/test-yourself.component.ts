@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { Word } from 'src/app/interfaces/word.interface';
 
 @Component({
   selector: 'app-test-yourself',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestYourselfComponent implements OnInit {
 
-  constructor() { }
+  selectionMode = true;
+  enoughElements: boolean;
+  words: Word[] = [];
+
+  constructor(
+    private dataService: DataService
+  ) { }
 
   ngOnInit() {
+    this.getWords();
+  }
+
+  private getWords() {
+    this.dataService.getWords().subscribe(data => {
+      this.words = data;
+      this.enoughElements = (this.words.length >= 10) ? true : false;
+    });
+  }
+
+  modeSelection(abcdTest: boolean) {
+    console.log(abcdTest);
+    this.selectionMode = false;
   }
 
 }

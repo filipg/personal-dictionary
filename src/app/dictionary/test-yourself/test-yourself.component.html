@@ -1,1 +1,28 @@
-<p>test-yourself works!</p>
+<div class="container">
+    <div *ngIf="selectionMode; else testMode">
+        <div class="info" *ngIf="!enoughElements">
+            Please add at least 10 words to your dictionary.
+        </div>
+        <div *ngIf="enoughElements">
+            <div class="ripple-container"
+                matRipple
+                [matRippleCentered]="true"
+                [matRippleDisabled]="false"
+                [matRippleUnbounded]="false"
+                (click)="modeSelection(true)">
+                ABCD Test
+            </div>
+            <div class="ripple-container"
+                matRipple
+                [matRippleCentered]="true"
+                [matRippleDisabled]="false"
+                [matRippleUnbounded]="false"
+                (click)="modeSelection(false)">
+                Translation Test
+            </div>
+        </div>
+    </div>
+    <ng-template #testMode>   
+        Another magic element!
+    </ng-template>
+</div>

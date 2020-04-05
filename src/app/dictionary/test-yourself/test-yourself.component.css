@@ -1,0 +1,35 @@
+.container {
+    width: 90%;
+    min-height: 500px;
+    margin: 2em auto;
+}
+
+.info {
+    font-size: 2em;
+    color: red;
+    font-weight: 300;
+    text-align: center;
+    margin: 2em;
+}
+
+.ripple-container {
+    cursor: pointer;
+    text-align: center;
+    margin: 1em;
+    background-color: #eeeeee;
+    font-size: 2rem;
+    display: inline-block;
+    font-weight: 300;
+  
+    width: 40%;
+    height: 300px;
+    line-height: 300px;
+  
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
+  }

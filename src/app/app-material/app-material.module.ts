@@ -10,6 +10,8 @@ import {MatInputModule} from '@angular/material';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatRippleModule} from '@angular/material/core';
+
 
 @NgModule({
   declarations: [],
@@ -24,7 +26,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatInputModule,
     MatProgressSpinnerModule,
     MatTabsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatRippleModule
   ],
   exports: [
     MatButtonModule,
@@ -36,7 +39,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatInputModule,
     MatProgressSpinnerModule,
     MatTabsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatRippleModule
   ]
 })
 export class AppMaterialModule { }

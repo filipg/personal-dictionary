@@ -1,6 +1,7 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { Word } from 'src/app/interfaces/word.interface';
+
 
 @Component({
   selector: 'app-words',
@@ -16,7 +17,7 @@ export class WordsComponent implements OnInit {
   highValue = 15;
 
   constructor(
-    private dataService: DataService
+    private dataService: DataService,
   ) { }
 
   ngOnInit() {
