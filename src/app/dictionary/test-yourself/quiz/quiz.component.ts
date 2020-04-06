@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Word } from 'src/app/interfaces/word.interface';
 import { DataService } from 'src/app/services/data.service';
 import { map, tap, switchMap } from 'rxjs/operators';
-import { QuizItem, AbcdQuizItem } from 'src/app/interfaces/quiz.interface';
+import { QuizItem, AbcdQuizItem, QuizResults } from 'src/app/interfaces/quiz.interface';
 
 @Component({
   selector: 'app-quiz',
@@ -17,6 +17,7 @@ export class QuizComponent implements OnInit {
   abcdQuizItems: AbcdQuizItem[] = [];
   numberOfPossibleAnswers = 4; // abcd (4 possibilities) not abcdef (6 possibilities)
   results: any[];
+  @Output() emitResults = new EventEmitter<any>();
 
   constructor(
     private dataService: DataService
@@ -74,7 +75,17 @@ export class QuizComponent implements OnInit {
   }
 
   submitQuiz() {
-    console.log(this.results);
+    // api call to save results !!!
+    const toEmit: QuizResults = {
+      abcdQuizMode: true,
+      items: this.results
+    };
+    this.words = [];
+    this.abcdQuiz = null;
+    this.selectedWords = [];
+    this.abcdQuizItems = [];
+    this.results = [];
+    this.emitResults.emit(toEmit);
   }
 
 }
