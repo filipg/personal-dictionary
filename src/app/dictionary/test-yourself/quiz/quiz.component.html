@@ -1,1 +1,19 @@
-<p>quiz works!</p>
+<div class="container">
+    <div *ngIf="abcdQuiz; else translationQuiz">
+        <div *ngFor="let item of abcdQuizItems; let i = index" class="quiz-item">
+            <label class="question-label">{{item.question}}</label>
+            <mat-radio-group
+                aria-labelledby="example-radio-group-label"
+                class="radio-group">
+                <mat-radio-button class="radio-button" *ngFor="let option of item.options" [value]="option" (change)="onSelect(item, option, i)">
+                    {{option.name}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <button mat-button (click)="submitQuiz()">Submit</button>
+    </div>
+
+    <ng-template #translationQuiz>
+        TRANSLATION QUIZ
+    </ng-template>
+</div>

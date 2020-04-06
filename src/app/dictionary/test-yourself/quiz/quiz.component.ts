@@ -16,6 +16,7 @@ export class QuizComponent implements OnInit {
   selectedWords: Word[] = [];
   abcdQuizItems: AbcdQuizItem[] = [];
   numberOfPossibleAnswers = 4; // abcd (4 possibilities) not abcdef (6 possibilities)
+  results: any[];
 
   constructor(
     private dataService: DataService
@@ -23,6 +24,8 @@ export class QuizComponent implements OnInit {
 
   ngOnInit() {
     this.chooseQuizWords(5, 3, 2);
+    this.results = new Array(5);
+    console.log(this.results);
   }
 
   private chooseQuizWords(quizSize: number, questionsInEnglish: number, questionsInPolish: number) {
@@ -61,6 +64,17 @@ export class QuizComponent implements OnInit {
       };
     });
     this.abcdQuizItems.push(...quizQuestions);
+  }
+
+  onSelect(quizItem: AbcdQuizItem, selectedOption: QuizItem, index: number) {
+    this.results[index] = {
+      question: quizItem,
+      usersAnswer: selectedOption
+    };
+  }
+
+  submitQuiz() {
+    console.log(this.results);
   }
 
 }
