@@ -15,6 +15,7 @@ export class WordsComponent implements OnInit {
   pageSize = 15;
   lowValue = 0;
   highValue = 15;
+  loading = true;
 
   constructor(
     private dataService: DataService,
@@ -22,19 +23,20 @@ export class WordsComponent implements OnInit {
 
   ngOnInit() {
     this.getWords();
-    this.getNewWords();
+    // this.getNewWords();
   }
 
   private getWords() {
     this.dataService.getWords().subscribe(data => {
       this.words = data;
+      this.loading = false;
       console.log(this.words);
     });
   }
 
-  private getNewWords() {
-    this.dataService.subject.subscribe(data => this.getWords());
-  }
+  // private getNewWords() {
+  //   this.dataService.subject.subscribe(data => this.getWords());
+  // }
 
   deleteWord(id: number | string, index: number) {
     this.dataService.deleteWord(id).subscribe(data => {

@@ -8,7 +8,6 @@ import { MatListModule } from '@angular/material/list';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatTabsModule} from '@angular/material/tabs';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatRippleModule} from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
@@ -26,7 +25,6 @@ import {MatRadioModule} from '@angular/material/radio';
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    MatTabsModule,
     MatPaginatorModule,
     MatRippleModule,
     MatRadioModule
@@ -40,7 +38,6 @@ import {MatRadioModule} from '@angular/material/radio';
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    MatTabsModule,
     MatPaginatorModule,
     MatRippleModule,
     MatRadioModule

@@ -12,7 +12,6 @@ import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthInterceptorService } from './auth/auth-interceptor';
 import { AddWordComponent } from './dictionary/add-word/add-word.component';
 import { WordsComponent } from './dictionary/words/words.component';
@@ -26,7 +25,6 @@ import { QuizComponent } from './dictionary/test-yourself/quiz/quiz.component';
     NavComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent,
     AddWordComponent,
     WordsComponent,
     TestYourselfComponent,

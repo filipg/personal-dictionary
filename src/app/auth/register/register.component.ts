@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
     this.loading = true;
     this.authService.signup(this.form.value.email, this.form.value.password).subscribe(data => {
       this.loading = false;
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/add-word']);
     }, errorMessage => {
       this.loading = false;
       this.error = errorMessage;

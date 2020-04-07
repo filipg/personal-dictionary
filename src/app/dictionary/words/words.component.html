@@ -1,22 +1,29 @@
 <div class="container">
-    <mat-list role="list">
-        <mat-list-item role="listitem" *ngFor="let word of words | slice: lowValue : highValue; let i = index " class="list-item">
-            <div class="wordToTranslate">
-                {{word.wordInEnglish}} -
-            </div>
-             <div *ngFor="let translation of word.translation"> 
-                <span>&nbsp; {{translation}} </span>
-            </div>
-            <span class="spacer"></span>
-            <span class="material-icons icon" (click)="deleteWord(word.id, i)">clear</span>
-            <mat-divider></mat-divider>
-        </mat-list-item>
-    </mat-list>
+    <ng-container *ngIf="!loading; then wordsList else loader"></ng-container>
 
-    <mat-paginator 
-        [length]="words.length" 
-        [pageSize]="pageSize" 
-        (page)="pageEvent = getPaginatorData($event)"
-        class="paginator">
-    </mat-paginator> 
+    <ng-template #wordsList>
+        <mat-list role="list">
+            <mat-list-item role="listitem" *ngFor="let word of words | slice: lowValue : highValue; let i = index " class="list-item">
+                <div class="wordToTranslate">
+                    {{word.wordInEnglish}} -
+                </div>
+                <div *ngFor="let translation of word.translation"> 
+                    <span>&nbsp; {{translation}} </span>
+                </div>
+                <span class="spacer"></span>
+                <span class="material-icons icon" (click)="deleteWord(word.id, i)">clear</span>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+
+        <mat-paginator 
+            [length]="words.length" 
+            [pageSize]="pageSize" 
+            (page)="pageEvent = getPaginatorData($event)"
+            class="paginator">
+        </mat-paginator> 
+    </ng-template>
+    <ng-template #loader>
+            <mat-spinner class="spinner"></mat-spinner>
+    </ng-template>
 </div>
