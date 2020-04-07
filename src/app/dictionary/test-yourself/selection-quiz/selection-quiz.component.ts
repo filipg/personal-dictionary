@@ -76,12 +76,6 @@ export class SelectionQuizComponent implements OnInit {
       items: this.results
     };
     console.log(toEmit);
-    // this.words = [];
-    // this.abcdQuiz = null;
-    // this.selectedWords = [];
-    // this.abcdQuizItems = [];
-    // this.results = [];
-    // this.emitResults.emit(toEmit);
   }
 
 }
