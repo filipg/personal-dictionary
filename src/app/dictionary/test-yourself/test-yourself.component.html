@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div *ngIf="!displayResults; else renderResults">
         <div *ngIf="selectionMode; else testMode">
             <div class="info" *ngIf="!enoughElements">
@@ -38,6 +38,44 @@
         </div>
         <ng-template #translationMode>
 
+        </ng-template>
+    </ng-template>
+</div> -->
+
+<div class="container">
+
+    <ng-container *ngIf="loading; then spinner else content"></ng-container>
+
+    <ng-template #spinner>
+        <mat-spinner class="spinner"></mat-spinner>
+    </ng-template>
+
+    <ng-template #content>
+        <ng-container *ngIf="enoughElements; then selectionMode else notEnoughElements"></ng-container>
+
+        <ng-template #selectionMode>
+            <div class="ripple-container"
+                matRipple
+                [matRippleCentered]="true"
+                [matRippleDisabled]="false"
+                [matRippleUnbounded]="false"
+                (click)="modeSelection(true)">
+                ABCD Test
+            </div>
+            <div class="ripple-container"
+                matRipple
+                [matRippleCentered]="true"
+                [matRippleDisabled]="false"
+                [matRippleUnbounded]="false"
+                (click)="modeSelection(false)">
+                Translation Test
+            </div>
+        </ng-template>
+
+        <ng-template #notEnoughElements>
+            <div class="info" *ngIf="!enoughElements">
+                Please add at least 10 words to your dictionary.
+            </div>
         </ng-template>
     </ng-template>
 </div>

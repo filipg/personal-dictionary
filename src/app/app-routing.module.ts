@@ -7,6 +7,8 @@ import { AddWordComponent } from './dictionary/add-word/add-word.component';
 import { WordsComponent } from './dictionary/words/words.component';
 import { TestYourselfComponent } from './dictionary/test-yourself/test-yourself.component';
 import { ResultsComponent } from './dictionary/results/results.component';
+import { SelectionQuizComponent } from './dictionary/test-yourself/selection-quiz/selection-quiz.component';
+import { TranslationQuizComponent } from './dictionary/test-yourself/translation-quiz/translation-quiz.component';
 
 
 const routes: Routes = [
@@ -15,8 +17,10 @@ const routes: Routes = [
   {path: 'add-word', component: AddWordComponent, canActivate: [AuthGuard]},
   {path: 'words', component: WordsComponent, canActivate: [AuthGuard]},
   {path: 'test-yourself', component: TestYourselfComponent, canActivate: [AuthGuard]},
+  {path: 'selection-quiz', component: SelectionQuizComponent, canActivate: [AuthGuard]},
+  {path: 'translation-quiz', component: TranslationQuizComponent, canActivate: [AuthGuard]},
   {path: 'results', component: ResultsComponent, canActivate: [AuthGuard]},
-  {path: '**', pathMatch: 'full', redirectTo: 'login'},
+  {path: '**', pathMatch: 'full', redirectTo: 'words'},
 ];
 
 @NgModule({

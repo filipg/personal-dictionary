@@ -21,7 +21,7 @@
     display: inline-block;
     font-weight: 300;
   
-    width: 40%;
+    width: calc(50% - 2em);
     height: 300px;
     line-height: 300px;
   
@@ -33,3 +33,7 @@
     -webkit-user-drag: none;
     -webkit-tap-highlight-color: transparent;
   }
+
+.spinner {
+    margin: 2em auto;
+}
