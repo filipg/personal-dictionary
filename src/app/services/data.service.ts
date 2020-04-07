@@ -3,8 +3,8 @@ import { Word } from '../interfaces/word.interface';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { switchMap, take, map, tap } from 'rxjs/operators';
-import { Observable, Subject, of } from 'rxjs';
-import { QuizItem } from '../interfaces/quiz.interface';
+import { Observable, Subject, of, BehaviorSubject } from 'rxjs';
+import { QuizItem, QuizResult } from '../interfaces/quiz.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,7 @@ import { QuizItem } from '../interfaces/quiz.interface';
 export class DataService {
 
   subject = new Subject<boolean>();
+  quizResultSubject = new BehaviorSubject<QuizResult>(null);
 
   constructor(
     private http: HttpClient,

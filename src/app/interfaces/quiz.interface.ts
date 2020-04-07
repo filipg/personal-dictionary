@@ -13,7 +13,7 @@ export interface SingleQuestionResult {
     usersAnswer: QuizItem;
 }
 
-export interface QuizResults {
+export interface QuizResult {
     abcdQuizMode: boolean;
     items: SingleQuestionResult[];
 }

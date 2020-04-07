@@ -9,6 +9,7 @@ import { TestYourselfComponent } from './dictionary/test-yourself/test-yourself.
 import { ResultsComponent } from './dictionary/results/results.component';
 import { SelectionQuizComponent } from './dictionary/test-yourself/selection-quiz/selection-quiz.component';
 import { TranslationQuizComponent } from './dictionary/test-yourself/translation-quiz/translation-quiz.component';
+import { QuizResultComponent } from './dictionary/test-yourself/quiz-result/quiz-result.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'test-yourself', component: TestYourselfComponent, canActivate: [AuthGuard]},
   {path: 'selection-quiz', component: SelectionQuizComponent, canActivate: [AuthGuard]},
   {path: 'translation-quiz', component: TranslationQuizComponent, canActivate: [AuthGuard]},
+  {path: 'quiz-result', component: QuizResultComponent, canActivate: [AuthGuard]},
   {path: 'results', component: ResultsComponent, canActivate: [AuthGuard]},
   {path: '**', pathMatch: 'full', redirectTo: 'words'},
 ];

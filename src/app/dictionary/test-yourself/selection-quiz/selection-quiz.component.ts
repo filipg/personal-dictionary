@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { map, tap, switchMap } from 'rxjs/operators';
 import { Word } from 'src/app/interfaces/word.interface';
-import { QuizItem, AbcdQuizItem, QuizResults, SingleQuestionResult } from 'src/app/interfaces/quiz.interface';
+import { QuizItem, AbcdQuizItem, SingleQuestionResult, QuizResult } from 'src/app/interfaces/quiz.interface';
 import { Router } from '@angular/router';
 
 @Component({
@@ -73,12 +73,12 @@ export class SelectionQuizComponent implements OnInit {
 
   submitQuiz() {
     // api call to save results !!!
-    const toEmit: QuizResults = {
+    const toEmit: QuizResult = {
       abcdQuizMode: true,
       items: this.results
     };
+    this.dataService.quizResultSubject.next(toEmit);
     this.router.navigate(['quiz-result']);
-    console.log(toEmit);
   }
 
 }
