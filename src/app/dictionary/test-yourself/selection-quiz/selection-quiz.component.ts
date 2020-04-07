@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { map, tap, switchMap } from 'rxjs/operators';
 import { Word } from 'src/app/interfaces/word.interface';
-import { QuizItem, AbcdQuizItem, QuizResults } from 'src/app/interfaces/quiz.interface';
+import { QuizItem, AbcdQuizItem, QuizResults, SingleQuestionResult } from 'src/app/interfaces/quiz.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-selection-quiz',
@@ -13,13 +14,14 @@ export class SelectionQuizComponent implements OnInit {
 
   selectedWords: Word[] = [];
   quizItems: AbcdQuizItem[] = [];
-  results: any[];
+  results: SingleQuestionResult[];
   numberOfPossibleAnswers = 4; // abcd (4 possibilities) not abcdef (6 possibilities)
   loading = true;
 
 
   constructor(
-    private dataService: DataService
+    private dataService: DataService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -75,6 +77,7 @@ export class SelectionQuizComponent implements OnInit {
       abcdQuizMode: true,
       items: this.results
     };
+    this.router.navigate(['quiz-result']);
     console.log(toEmit);
   }
 

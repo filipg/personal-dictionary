@@ -17,9 +17,9 @@ import { AddWordComponent } from './dictionary/add-word/add-word.component';
 import { WordsComponent } from './dictionary/words/words.component';
 import { TestYourselfComponent } from './dictionary/test-yourself/test-yourself.component';
 import { ResultsComponent } from './dictionary/results/results.component';
-import { QuizComponent } from './dictionary/test-yourself/quiz/quiz.component';
 import { SelectionQuizComponent } from './dictionary/test-yourself/selection-quiz/selection-quiz.component';
 import { TranslationQuizComponent } from './dictionary/test-yourself/translation-quiz/translation-quiz.component';
+import { QuizResultComponent } from './dictionary/test-yourself/quiz-result/quiz-result.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +31,9 @@ import { TranslationQuizComponent } from './dictionary/test-yourself/translation
     WordsComponent,
     TestYourselfComponent,
     ResultsComponent,
-    QuizComponent,
     SelectionQuizComponent,
-    TranslationQuizComponent
+    TranslationQuizComponent,
+    QuizResultComponent
   ],
   imports: [
     BrowserModule,

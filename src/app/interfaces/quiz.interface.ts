@@ -8,7 +8,12 @@ export interface QuizItem {
     correctAnswer: boolean;
 }
 
+export interface SingleQuestionResult {
+    question: AbcdQuizItem;
+    usersAnswer: QuizItem;
+}
+
 export interface QuizResults {
     abcdQuizMode: boolean;
-    items: AbcdQuizItem[];
+    items: SingleQuestionResult[];
 }
