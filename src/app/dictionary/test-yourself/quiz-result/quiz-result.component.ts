@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import { QuizResult } from 'src/app/interfaces/quiz.interface';
+import { QuizResult, QuizItem } from 'src/app/interfaces/quiz.interface';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -12,6 +12,7 @@ export class QuizResultComponent implements OnInit {
 
   selectionQuizResult: QuizResult;
   overalResultToDisplay = '';
+  loading = true;
 
   constructor(
     private dataService: DataService
@@ -39,11 +40,21 @@ export class QuizResultComponent implements OnInit {
   private displaySelectionQuizResult() {
     const correct = this.selectionQuizResult.items.map(el => el.usersAnswer.correctAnswer);
     this.overalResultToDisplay = `${correct.filter(el => el === true).length} / ${correct.length}`;
+    this.loading = false;
     console.log(correct);
   }
 
   private displayTranslationQuizResult() {
 
+  }
+
+  highlightAnswers(option: QuizItem, userAnswer: QuizItem) {
+    if ((option.correctAnswer && option === userAnswer) || (option.correctAnswer && option !== userAnswer)) {
+      return '#b3ffb3';
+    } else if (!option.correctAnswer && option === userAnswer) {
+      return '#ffcccc';
+    }
+    return '';
   }
 
 }

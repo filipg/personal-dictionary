@@ -1,3 +1,14 @@
-<div class="container">
-    <h1>{{overalResultToDisplay}}</h1>
+<div class="container" *ngIf="!loading">
+    <div class="overall-result">
+        Result: {{overalResultToDisplay}}
+    </div>
+
+    <div *ngFor="let item of selectionQuizResult.items; let i = index" class="quiz-item">
+        <label class="question-label">{{item.question.question}}</label>
+        <mat-list>
+            <mat-list-item *ngFor="let option of item.question.options" [style.backgroundColor]="highlightAnswers(option, item.usersAnswer)">
+                {{option.name}}
+            </mat-list-item>
+        </mat-list>
+    </div>
 </div>
