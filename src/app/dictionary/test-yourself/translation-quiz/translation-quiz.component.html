@@ -8,12 +8,18 @@
     <ng-template #content>
         <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!loading">
             <div formArrayName="items" *ngFor="let item of form.get('items').controls; let i = index;">
-                <div [formGroupName]="i">
-                    <input formControlName="name" placeholder="Item name">
+                <div [formGroupName]="i" class="quiz-item">
+                    <span class="question">{{quizItems[i].question}} :</span>
+                    <mat-form-field appearance="outline" class="answer-input">
+                        <mat-label>your answer...</mat-label>
+                        <input matInput formControlName="name">
+                    </mat-form-field>
                 </div>
             </div>
 
-            <button mat-button color="primary">Submit</button>
+            <div class="button-container">
+                <button mat-button color="primary">Submit</button>
+            </div>
         </form>
     </ng-template>
 </div>
