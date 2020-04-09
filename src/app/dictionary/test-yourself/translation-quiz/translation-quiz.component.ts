@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { map, tap } from 'rxjs/operators';
-import { TranslationQuizItem } from 'src/app/interfaces/quiz.interface';
+import { TranslationQuizItem, TranslationQuizResult, SingleTranslationQuestionResult } from 'src/app/interfaces/quiz.interface';
 import { Word } from 'src/app/interfaces/word.interface';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-translation-quiz',
@@ -15,11 +16,13 @@ export class TranslationQuizComponent implements OnInit {
   quizItems: TranslationQuizItem[] = [];
   form: FormGroup;
   items: FormArray;
+  quizResult: TranslationQuizResult;
   loading = true;
 
   constructor(
     private dataService: DataService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -70,7 +73,24 @@ export class TranslationQuizComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    const items: SingleTranslationQuestionResult[] = this.quizItems.map((el, index) => {
+      return {
+        question: el.question,
+        options: this.removePolishSigns(el.options, true),
+        usersAnswer: this.removePolishSigns(this.form.value.items[index].name, false)
+      };
+    });
+    this.quizResult = {
+      abcdQuizMode: false,
+      items
+    };
+    // this.dataService.quizResultSubject.next(this.quizResult);
+    this.router.navigate(['quiz-result']);
+  }
+
+  private removePolishSigns(items: string | string[], isArray: boolean): string | string[] {
+    return isArray ? Array.from(items).map(el => el.normalize('NFD').replace(/[\u0300-\u036f]/g, ''))
+     : String(items).normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
 
 }

@@ -22,3 +22,14 @@ export interface TranslationQuizItem {
     question: string;
     options: string[];
 }
+
+export interface TranslationQuizResult {
+    abcdQuizMode: boolean;
+    items: SingleTranslationQuestionResult[];
+}
+
+export interface SingleTranslationQuestionResult {
+    question: string;
+    options: string | string[];
+    usersAnswer: string | string[];
+}

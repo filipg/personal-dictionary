@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { switchMap, take, map, tap } from 'rxjs/operators';
 import { Observable, Subject, of, BehaviorSubject } from 'rxjs';
-import { QuizItem, QuizResult } from '../interfaces/quiz.interface';
+import { QuizItem, QuizResult, TranslationQuizResult } from '../interfaces/quiz.interface';
 
 @Injectable({
   providedIn: 'root'
