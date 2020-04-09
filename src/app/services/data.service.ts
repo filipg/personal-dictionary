@@ -12,7 +12,8 @@ import { QuizItem, QuizResult, TranslationQuizResult } from '../interfaces/quiz.
 export class DataService {
 
   subject = new Subject<boolean>();
-  quizResultSubject = new BehaviorSubject<QuizResult>(null);
+  selectionResultSubject = new BehaviorSubject<QuizResult>(null);
+  translationResultSubject = new BehaviorSubject<TranslationQuizResult>(null);
 
   constructor(
     private http: HttpClient,

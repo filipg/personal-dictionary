@@ -84,8 +84,8 @@ export class TranslationQuizComponent implements OnInit {
       abcdQuizMode: false,
       items
     };
-    // this.dataService.quizResultSubject.next(this.quizResult);
-    this.router.navigate(['quiz-result']);
+    this.dataService.translationResultSubject.next(this.quizResult);
+    this.router.navigate(['translation-result']);
   }
 
   private removePolishSigns(items: string | string[], isArray: boolean): string | string[] {

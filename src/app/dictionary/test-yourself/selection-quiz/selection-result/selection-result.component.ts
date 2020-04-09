@@ -5,10 +5,10 @@ import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-quiz-result',
-  templateUrl: './quiz-result.component.html',
-  styleUrls: ['./quiz-result.component.css']
+  templateUrl: './selection-result.component.html',
+  styleUrls: ['./selection-result.component.css']
 })
-export class QuizResultComponent implements OnInit {
+export class SelectionResultComponent implements OnInit {
 
   selectionQuizResult: QuizResult;
   overalResultToDisplay = '';
@@ -23,7 +23,7 @@ export class QuizResultComponent implements OnInit {
   }
 
   private getQuizResult() {
-    this.dataService.quizResultSubject.pipe(
+    this.dataService.selectionResultSubject.pipe(
       take(1)
     ).subscribe(data => {
       if (data !== null) {

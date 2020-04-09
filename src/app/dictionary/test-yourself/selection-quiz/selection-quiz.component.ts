@@ -77,8 +77,8 @@ export class SelectionQuizComponent implements OnInit {
       abcdQuizMode: true,
       items: this.results
     };
-    this.dataService.quizResultSubject.next(toEmit);
-    this.router.navigate(['quiz-result']);
+    this.dataService.selectionResultSubject.next(toEmit);
+    this.router.navigate(['selection-result']);
   }
 
 }
