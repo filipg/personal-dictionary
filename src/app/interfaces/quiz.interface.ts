@@ -17,3 +17,8 @@ export interface QuizResult {
     abcdQuizMode: boolean;
     items: SingleQuestionResult[];
 }
+
+export interface TranslationQuizItem {
+    question: string;
+    options: string[];
+}
