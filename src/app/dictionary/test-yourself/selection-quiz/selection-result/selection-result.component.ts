@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { QuizResult, QuizItem } from 'src/app/interfaces/quiz.interface';
 import { take } from 'rxjs/operators';
+import { ResultService } from 'src/app/services/result.service';
 
 @Component({
   selector: 'app-quiz-result',
@@ -15,7 +16,8 @@ export class SelectionResultComponent implements OnInit {
   loading = true;
 
   constructor(
-    private dataService: DataService
+    private dataService: DataService,
+    private resultService: ResultService
   ) { }
 
   ngOnInit() {
@@ -36,8 +38,10 @@ export class SelectionResultComponent implements OnInit {
   private displaySelectionQuizResult() {
     const correct = this.selectionQuizResult.items.map(el => el.usersAnswer.correctAnswer);
     this.overalResultToDisplay = `${correct.filter(el => el === true).length} / ${correct.length}`;
-    this.loading = false;
-    console.log(correct);
+    this.resultService.saveOverallResult(correct.length, correct.filter(el => el === true).length).subscribe(() => {
+      this.loading = false;
+      console.log(correct);
+    });
   }
 
   highlightAnswers(option: QuizItem, userAnswer: QuizItem) {

@@ -74,13 +74,11 @@ export class SelectionQuizComponent implements OnInit {
   }
 
   submitQuiz() {
-    // api call to save results !!!
     const toEmit: QuizResult = {
       abcdQuizMode: true,
       items: this.results
     };
-    this.resultService.saveSelectionQuizResult(toEmit).subscribe(data => {
-      console.log(data)
+    this.resultService.saveSelectionQuizResult(toEmit).subscribe(() => {
       this.dataService.selectionResultSubject.next(toEmit);
       this.router.navigate(['selection-result']);
     });

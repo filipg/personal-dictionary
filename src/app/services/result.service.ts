@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { take, switchMap, tap, map } from 'rxjs/operators';
-import { QuizResult } from '../interfaces/quiz.interface';
+import { QuizResult, TranslationQuizResult } from '../interfaces/quiz.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,23 +18,58 @@ export class ResultService {
   saveSelectionQuizResult(result: QuizResult) {
     return this.authService.user.pipe(
       take(1),
-      switchMap(user => this.http.post(`https://hopeful-theorem-196709.firebaseio.com/${user.id}/result.json`, result)),
+      switchMap(user => this.http.post(`https://hopeful-theorem-196709.firebaseio.com/${user.id}/resultselection.json`, result)),
     );
   }
 
   getSelectionQuizResult(): Observable<any> {
     return this.authService.user.pipe(
       take(1),
-      switchMap(user => this.http.get(`https://hopeful-theorem-196709.firebaseio.com/${user.id}/result.json`)),
-      map(responseData => {
-        const convertedData = [];
-        for (const key in responseData) {
-          if (responseData.hasOwnProperty(key)) {
-            convertedData.push({...responseData[key], id: key});
-          }
-        }
-        return convertedData;
-      })
+      switchMap(user => this.http.get(`https://hopeful-theorem-196709.firebaseio.com/${user.id}/resultselection.json`)),
+      map(responseData => this.handleFirebaseConvertion(responseData))
     );
+  }
+
+  saveOverallResult(quizSize: number, correctAnswers: number) {
+    return this.authService.user.pipe(
+      take(1),
+      switchMap(user => this.http.post(`https://hopeful-theorem-196709.firebaseio.com/${user.id}/overallresult.json`, {
+        quizSize,
+        correctAnswers
+      })),
+    );
+  }
+
+  getOverallResult() {
+    return this.authService.user.pipe(
+      take(1),
+      switchMap(user => this.http.get(`https://hopeful-theorem-196709.firebaseio.com/${user.id}/overallresult.json`)),
+      map(responseData => this.handleFirebaseConvertion(responseData))
+    );
+  }
+
+  saveTranslationQuizResult(result: TranslationQuizResult) {
+    return this.authService.user.pipe(
+      take(1),
+      switchMap(user => this.http.post(`https://hopeful-theorem-196709.firebaseio.com/${user.id}/resulttranslation.json`, result)),
+    );
+  }
+
+  getTranslationQuizResult() {
+    return this.authService.user.pipe(
+      take(1),
+      switchMap(user => this.http.get(`https://hopeful-theorem-196709.firebaseio.com/${user.id}/resulttranslation.json`)),
+      map(responseData => this.handleFirebaseConvertion(responseData))
+    );
+  }
+
+  private handleFirebaseConvertion(responseData: any): any {
+    const convertedData = [];
+    for (const key in responseData) {
+      if (responseData.hasOwnProperty(key)) {
+        convertedData.push({...responseData[key], id: key});
+      }
+    }
+    return convertedData;
   }
 }

@@ -5,6 +5,7 @@ import { TranslationQuizItem, TranslationQuizResult, SingleTranslationQuestionRe
 import { Word } from 'src/app/interfaces/word.interface';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ResultService } from 'src/app/services/result.service';
 
 @Component({
   selector: 'app-translation-quiz',
@@ -22,7 +23,8 @@ export class TranslationQuizComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private resultService: ResultService
   ) { }
 
   ngOnInit() {
@@ -84,8 +86,10 @@ export class TranslationQuizComponent implements OnInit {
       abcdQuizMode: false,
       items
     };
-    this.dataService.translationResultSubject.next(this.quizResult);
-    this.router.navigate(['translation-result']);
+    this.resultService.saveTranslationQuizResult(this.quizResult).subscribe(() => {
+      this.dataService.translationResultSubject.next(this.quizResult);
+      this.router.navigate(['translation-result']);
+    });
   }
 
   private removePolishSigns(items: string | string[], isArray: boolean): string | string[] {

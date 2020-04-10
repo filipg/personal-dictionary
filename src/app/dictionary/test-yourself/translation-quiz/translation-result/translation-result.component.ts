@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { TranslationQuizResult } from 'src/app/interfaces/quiz.interface';
 import { take } from 'rxjs/operators';
+import { ResultService } from 'src/app/services/result.service';
 
 @Component({
   selector: 'app-translation-result',
@@ -15,7 +16,8 @@ export class TranslationResultComponent implements OnInit {
   loading = true;
 
   constructor(
-    private dataService: DataService
+    private dataService: DataService,
+    private resultService: ResultService
   ) { }
 
   ngOnInit() {
@@ -39,7 +41,10 @@ export class TranslationResultComponent implements OnInit {
 
     console.log(correct);
     this.overalResultToDisplay = `${correct.filter(el => el === true).length} / ${correct.length}`;
-    this.loading = false;
+
+    this.resultService.saveOverallResult(correct.length, correct.filter(el => el === true).length).subscribe(() => {
+      this.loading = false;
+    });
   }
 
   checkIfCorrect(options: string[], usersAnswer: string): boolean {
