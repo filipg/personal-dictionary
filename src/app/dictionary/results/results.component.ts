@@ -3,6 +3,11 @@ import { ResultService } from 'src/app/services/result.service';
 import { combineLatest } from 'rxjs';
 import { SingleQuestionResult, SingleTranslationQuestionResult } from 'src/app/interfaces/quiz.interface';
 
+interface OverallResult {
+  quizSize: number;
+  correctAnswers: number;
+}
+
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
@@ -10,7 +15,7 @@ import { SingleQuestionResult, SingleTranslationQuestionResult } from 'src/app/i
 })
 export class ResultsComponent implements OnInit {
 
-  overallResult: {quizSize: number, correctAnswers: number}[] = [];
+  overallResult: OverallResult;
   selectionResults: SingleQuestionResult[] = [];
   translationResult: SingleTranslationQuestionResult[] = [];
 
@@ -30,11 +35,15 @@ export class ResultsComponent implements OnInit {
       ).subscribe(data => {
         this.selectionResults = data[0];
         this.translationResult = data[1];
-        this.overallResult = data[2];
-        console.log(this.overallResult);
-        console.log(this.selectionResults);
-        console.log(this.translationResult);
+        this.overallResult = data[2].reduce(this.reducer);
       });
+  }
+
+  private reducer(acc: OverallResult, curr: OverallResult) {
+    return {
+      quizSize: acc.quizSize + curr.quizSize,
+      correctAnswers: acc.correctAnswers + curr.correctAnswers
+    };
   }
 
 }

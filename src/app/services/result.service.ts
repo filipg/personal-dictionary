@@ -67,7 +67,8 @@ export class ResultService {
     const convertedData = [];
     for (const key in responseData) {
       if (responseData.hasOwnProperty(key)) {
-        convertedData.push({...responseData[key], id: key});
+        // convertedData.push({...responseData[key], id: key});
+        convertedData.push({...responseData[key]});
       }
     }
     return convertedData;
