@@ -13,19 +13,9 @@ export interface SingleQuestionResult {
     usersAnswer: QuizItem;
 }
 
-export interface QuizResult {
-    abcdQuizMode: boolean;
-    items: SingleQuestionResult[];
-}
-
 export interface TranslationQuizItem {
     question: string;
     options: string[];
-}
-
-export interface TranslationQuizResult {
-    abcdQuizMode: boolean;
-    items: SingleTranslationQuestionResult[];
 }
 
 export interface SingleTranslationQuestionResult {

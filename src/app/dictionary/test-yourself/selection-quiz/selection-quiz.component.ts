@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { map, tap, switchMap } from 'rxjs/operators';
 import { Word } from 'src/app/interfaces/word.interface';
-import { QuizItem, AbcdQuizItem, SingleQuestionResult, QuizResult } from 'src/app/interfaces/quiz.interface';
+import { QuizItem, AbcdQuizItem, SingleQuestionResult } from 'src/app/interfaces/quiz.interface';
 import { Router } from '@angular/router';
 import { ResultService } from 'src/app/services/result.service';
 
@@ -74,12 +74,8 @@ export class SelectionQuizComponent implements OnInit {
   }
 
   submitQuiz() {
-    const toEmit: QuizResult = {
-      abcdQuizMode: true,
-      items: this.results
-    };
-    this.resultService.saveSelectionQuizResult(toEmit).subscribe(() => {
-      this.dataService.selectionResultSubject.next(toEmit);
+    this.resultService.saveSelectionQuizResult(this.results).subscribe(() => {
+      this.dataService.selectionResultSubject.next(this.results);
       this.router.navigate(['selection-result']);
     });
   }

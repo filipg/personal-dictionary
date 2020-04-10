@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { take, switchMap, tap, map } from 'rxjs/operators';
-import { QuizResult, TranslationQuizResult } from '../interfaces/quiz.interface';
+import { take, switchMap, map } from 'rxjs/operators';
+import { SingleQuestionResult, SingleTranslationQuestionResult } from '../interfaces/quiz.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class ResultService {
     private http: HttpClient
   ) { }
 
-  saveSelectionQuizResult(result: QuizResult) {
+  saveSelectionQuizResult(result: SingleQuestionResult[]) {
     return this.authService.user.pipe(
       take(1),
       switchMap(user => this.http.post(`https://hopeful-theorem-196709.firebaseio.com/${user.id}/resultselection.json`, result)),
@@ -48,7 +48,7 @@ export class ResultService {
     );
   }
 
-  saveTranslationQuizResult(result: TranslationQuizResult) {
+  saveTranslationQuizResult(result: SingleTranslationQuestionResult[]) {
     return this.authService.user.pipe(
       take(1),
       switchMap(user => this.http.post(`https://hopeful-theorem-196709.firebaseio.com/${user.id}/resulttranslation.json`, result)),

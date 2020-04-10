@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { switchMap, take, map, tap } from 'rxjs/operators';
 import { Observable, Subject, of, BehaviorSubject } from 'rxjs';
-import { QuizItem, QuizResult, TranslationQuizResult } from '../interfaces/quiz.interface';
+import { QuizItem, SingleQuestionResult, SingleTranslationQuestionResult } from '../interfaces/quiz.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ import { QuizItem, QuizResult, TranslationQuizResult } from '../interfaces/quiz.
 export class DataService {
 
   subject = new Subject<boolean>();
-  selectionResultSubject = new BehaviorSubject<QuizResult>(null);
-  translationResultSubject = new BehaviorSubject<TranslationQuizResult>(null);
+  selectionResultSubject = new BehaviorSubject<SingleQuestionResult[]>(null);
+  translationResultSubject = new BehaviorSubject<SingleTranslationQuestionResult[]>(null);
 
   constructor(
     private http: HttpClient,

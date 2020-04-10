@@ -3,7 +3,7 @@
         Result: {{overalResultToDisplay}}
     </div>
 
-    <div *ngFor="let item of selectionQuizResult.items; let i = index" class="quiz-item">
+    <div *ngFor="let item of selectionQuizResult; let i = index" class="quiz-item">
         <label class="question-label">{{item.question.question}}</label>
         <mat-list>
             <mat-list-item *ngFor="let option of item.question.options" [style.backgroundColor]="highlightAnswers(option, item.usersAnswer)">

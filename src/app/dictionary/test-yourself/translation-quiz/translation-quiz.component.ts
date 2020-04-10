@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { map, tap } from 'rxjs/operators';
-import { TranslationQuizItem, TranslationQuizResult, SingleTranslationQuestionResult } from 'src/app/interfaces/quiz.interface';
+import { TranslationQuizItem, SingleTranslationQuestionResult } from 'src/app/interfaces/quiz.interface';
 import { Word } from 'src/app/interfaces/word.interface';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,7 +17,6 @@ export class TranslationQuizComponent implements OnInit {
   quizItems: TranslationQuizItem[] = [];
   form: FormGroup;
   items: FormArray;
-  quizResult: TranslationQuizResult;
   loading = true;
 
   constructor(
@@ -82,12 +81,8 @@ export class TranslationQuizComponent implements OnInit {
         usersAnswer: this.removePolishSigns(this.form.value.items[index].name, false)
       };
     });
-    this.quizResult = {
-      abcdQuizMode: false,
-      items
-    };
-    this.resultService.saveTranslationQuizResult(this.quizResult).subscribe(() => {
-      this.dataService.translationResultSubject.next(this.quizResult);
+    this.resultService.saveTranslationQuizResult(items).subscribe(() => {
+      this.dataService.translationResultSubject.next(items);
       this.router.navigate(['translation-result']);
     });
   }

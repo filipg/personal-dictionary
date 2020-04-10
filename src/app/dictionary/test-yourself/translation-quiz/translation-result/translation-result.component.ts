@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import { TranslationQuizResult } from 'src/app/interfaces/quiz.interface';
+import { SingleTranslationQuestionResult } from 'src/app/interfaces/quiz.interface';
 import { take } from 'rxjs/operators';
 import { ResultService } from 'src/app/services/result.service';
 
@@ -11,7 +11,7 @@ import { ResultService } from 'src/app/services/result.service';
 })
 export class TranslationResultComponent implements OnInit {
 
-  translationQuizResult: TranslationQuizResult;
+  translationQuizResult: SingleTranslationQuestionResult[] = [];
   overalResultToDisplay = '';
   loading = true;
 
@@ -36,7 +36,7 @@ export class TranslationResultComponent implements OnInit {
   }
 
   private displayTranslationQuizResult() {
-    const correct = this.translationQuizResult.items.map(el => Array.from(el.options)
+    const correct = this.translationQuizResult.map(el => Array.from(el.options)
       .some(option => option.replace(/\s+/g, '') === String(el.usersAnswer).replace(/\s+/g, '')));
 
     console.log(correct);
