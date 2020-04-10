@@ -27,12 +27,8 @@ export class SelectionResultComponent implements OnInit {
       take(1)
     ).subscribe(data => {
       if (data !== null) {
-        if (data.abcdQuizMode) {
-          this.selectionQuizResult = data;
-          this.displaySelectionQuizResult();
-        } else {
-          this.displayTranslationQuizResult();
-        }
+        this.selectionQuizResult = data;
+        this.displaySelectionQuizResult();
       }
     });
   }
@@ -42,10 +38,6 @@ export class SelectionResultComponent implements OnInit {
     this.overalResultToDisplay = `${correct.filter(el => el === true).length} / ${correct.length}`;
     this.loading = false;
     console.log(correct);
-  }
-
-  private displayTranslationQuizResult() {
-
   }
 
   highlightAnswers(option: QuizItem, userAnswer: QuizItem) {
