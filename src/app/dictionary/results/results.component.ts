@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ResultService } from 'src/app/services/result.service';
-import { combineLatest } from 'rxjs';
-import { SingleQuestionResult, SingleTranslationQuestionResult } from 'src/app/interfaces/quiz.interface';
 
 interface OverallResult {
   quizSize: number;
@@ -16,8 +14,10 @@ interface OverallResult {
 export class ResultsComponent implements OnInit {
 
   overallResult: OverallResult;
-  selectionResults: SingleQuestionResult[] = [];
-  translationResult: SingleTranslationQuestionResult[] = [];
+  selectionResults: OverallResult;
+  translationResults: OverallResult;
+  numberOfQuizes: {selectionQuiz: number, translationQuiz: number};
+  loading = true;
 
   constructor(
     private resultService: ResultService
@@ -30,36 +30,25 @@ export class ResultsComponent implements OnInit {
   private getResults() {
     this.resultService.getOverallResult().subscribe(data => {
       this.overallResult = data.reduce(this.reducer);
-      console.log(this.overallResult);
+      this.selectionResults = data.filter(el => el.selectionMode).reduce(this.reducer);
+      this.translationResults = data.filter(el => !el.selectionMode).reduce(this.reducer);
+      this.numberOfQuizes = {
+        selectionQuiz: data.filter(el => el.selectionMode).length,
+        translationQuiz: data.filter(el => !el.selectionMode).length
+      };
+      this.loading = false;
     });
-    // combineLatest(
-    //   this.resultService.getSelectionQuizResult(),
-    //   this.resultService.getTranslationQuizResult(),
-    //   this.resultService.getOverallResult()
-    //   ).subscribe(data => {
-    //     this.selectionResults = data[0];
-    //     this.translationResult = data[1];
-    //     this.overallResult = data[2].reduce(this.reducer);
-    //   });
   }
-
-  // private getResults() {
-  //   combineLatest(
-  //     this.resultService.getSelectionQuizResult(),
-  //     this.resultService.getTranslationQuizResult(),
-  //     this.resultService.getOverallResult()
-  //     ).subscribe(data => {
-  //       this.selectionResults = data[0];
-  //       this.translationResult = data[1];
-  //       this.overallResult = data[2].reduce(this.reducer);
-  //     });
-  // }
 
   private reducer(acc: OverallResult, curr: OverallResult) {
     return {
       quizSize: acc.quizSize + curr.quizSize,
       correctAnswers: acc.correctAnswers + curr.correctAnswers
     };
+  }
+
+  countPercentages(result: OverallResult): string {
+    return Math.round((result.correctAnswers * 100) / result.quizSize) + '%';
   }
 
 }

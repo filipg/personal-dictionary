@@ -1,1 +1,27 @@
-<p>results works!</p>
+<div class="container" *ngIf="!loading">
+    <div class="quiz-overall">
+        Overall result: {{countPercentages(overallResult)}}
+    </div>
+    <div class="quizes">
+        <div class="quiz">
+            <div class="quiz-title">
+                Selection quiz: 
+            </div>
+            <div class="quiz-item">
+                Overall: {{countPercentages(selectionResults)}}
+                <br/>
+                Number of quizes: {{numberOfQuizes.selectionQuiz}}
+            </div>
+        </div>
+        <div class="quiz">
+            <div class="quiz-title">
+                Translation quiz: 
+            </div>
+            <div class="quiz-item">
+                Overall: {{countPercentages(translationResults)}}
+                <br/>
+                Number of quizes: {{numberOfQuizes.translationQuiz}}
+            </div>
+        </div>
+    </div>
+</div>
