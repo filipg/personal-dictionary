@@ -28,16 +28,32 @@ export class ResultsComponent implements OnInit {
   }
 
   private getResults() {
-    combineLatest(
-      this.resultService.getSelectionQuizResult(),
-      this.resultService.getTranslationQuizResult(),
-      this.resultService.getOverallResult()
-      ).subscribe(data => {
-        this.selectionResults = data[0];
-        this.translationResult = data[1];
-        this.overallResult = data[2].reduce(this.reducer);
-      });
+    this.resultService.getOverallResult().subscribe(data => {
+      this.overallResult = data.reduce(this.reducer);
+      console.log(this.overallResult);
+    });
+    // combineLatest(
+    //   this.resultService.getSelectionQuizResult(),
+    //   this.resultService.getTranslationQuizResult(),
+    //   this.resultService.getOverallResult()
+    //   ).subscribe(data => {
+    //     this.selectionResults = data[0];
+    //     this.translationResult = data[1];
+    //     this.overallResult = data[2].reduce(this.reducer);
+    //   });
   }
+
+  // private getResults() {
+  //   combineLatest(
+  //     this.resultService.getSelectionQuizResult(),
+  //     this.resultService.getTranslationQuizResult(),
+  //     this.resultService.getOverallResult()
+  //     ).subscribe(data => {
+  //       this.selectionResults = data[0];
+  //       this.translationResult = data[1];
+  //       this.overallResult = data[2].reduce(this.reducer);
+  //     });
+  // }
 
   private reducer(acc: OverallResult, curr: OverallResult) {
     return {

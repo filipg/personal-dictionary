@@ -5,7 +5,6 @@ import { TranslationQuizItem, SingleTranslationQuestionResult } from 'src/app/in
 import { Word } from 'src/app/interfaces/word.interface';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ResultService } from 'src/app/services/result.service';
 
 @Component({
   selector: 'app-translation-quiz',
@@ -22,8 +21,7 @@ export class TranslationQuizComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private fb: FormBuilder,
-    private router: Router,
-    private resultService: ResultService
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -81,10 +79,9 @@ export class TranslationQuizComponent implements OnInit {
         usersAnswer: this.removePolishSigns(this.form.value.items[index].name, false)
       };
     });
-    this.resultService.saveTranslationQuizResult(items).subscribe(() => {
-      this.dataService.translationResultSubject.next(items);
-      this.router.navigate(['translation-result']);
-    });
+
+    this.dataService.translationResultSubject.next(items);
+    this.router.navigate(['translation-result']);
   }
 
   private removePolishSigns(items: string | string[], isArray: boolean): string | string[] {

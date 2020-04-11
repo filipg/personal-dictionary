@@ -4,7 +4,6 @@ import { map, tap, switchMap } from 'rxjs/operators';
 import { Word } from 'src/app/interfaces/word.interface';
 import { QuizItem, AbcdQuizItem, SingleQuestionResult } from 'src/app/interfaces/quiz.interface';
 import { Router } from '@angular/router';
-import { ResultService } from 'src/app/services/result.service';
 
 @Component({
   selector: 'app-selection-quiz',
@@ -23,7 +22,6 @@ export class SelectionQuizComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private router: Router,
-    private resultService: ResultService
   ) { }
 
   ngOnInit() {
@@ -74,10 +72,15 @@ export class SelectionQuizComponent implements OnInit {
   }
 
   submitQuiz() {
-    this.resultService.saveSelectionQuizResult(this.results).subscribe(() => {
-      this.dataService.selectionResultSubject.next(this.results);
-      this.router.navigate(['selection-result']);
-    });
+    // const wordsToPractise = this.results.filter(e => !e.usersAnswer.correctAnswer).map(el => {
+    //     return {
+    //       question: el.question.question,
+    //       correct: el.question.options.find(option => option.correctAnswer).name
+    //     };
+    // });
+    // console.log(wordsToPractise);
+    this.dataService.selectionResultSubject.next(this.results);
+    this.router.navigate(['selection-result']);
   }
 
 }

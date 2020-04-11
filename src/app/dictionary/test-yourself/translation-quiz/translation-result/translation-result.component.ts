@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import { SingleTranslationQuestionResult } from 'src/app/interfaces/quiz.interface';
+import { SingleTranslationQuestionResult, QuizResult } from 'src/app/interfaces/quiz.interface';
 import { take } from 'rxjs/operators';
 import { ResultService } from 'src/app/services/result.service';
 
@@ -39,10 +39,15 @@ export class TranslationResultComponent implements OnInit {
     const correct = this.translationQuizResult.map(el => Array.from(el.options)
       .some(option => option.replace(/\s+/g, '') === String(el.usersAnswer).replace(/\s+/g, '')));
 
-    console.log(correct);
     this.overalResultToDisplay = `${correct.filter(el => el === true).length} / ${correct.length}`;
 
-    this.resultService.saveOverallResult(correct.length, correct.filter(el => el === true).length).subscribe(() => {
+    const resultToSave: QuizResult = {
+      quizSize: correct.length,
+      correctAnswers: correct.filter(el => el === true).length,
+      selectionMode: false
+    };
+
+    this.resultService.saveOverallResult(resultToSave).subscribe(() => {
       this.loading = false;
     });
   }

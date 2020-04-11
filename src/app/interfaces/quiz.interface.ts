@@ -23,3 +23,9 @@ export interface SingleTranslationQuestionResult {
     options: string | string[];
     usersAnswer: string | string[];
 }
+
+export interface QuizResult {
+    quizSize: number;
+    correctAnswers: number;
+    selectionMode: boolean;
+}

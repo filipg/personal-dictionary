@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import { QuizResult, QuizItem, SingleQuestionResult } from 'src/app/interfaces/quiz.interface';
+import { QuizItem, SingleQuestionResult, QuizResult } from 'src/app/interfaces/quiz.interface';
 import { take } from 'rxjs/operators';
 import { ResultService } from 'src/app/services/result.service';
 
@@ -38,9 +38,14 @@ export class SelectionResultComponent implements OnInit {
   private displaySelectionQuizResult() {
     const correct = this.selectionQuizResult.map(el => el.usersAnswer.correctAnswer);
     this.overalResultToDisplay = `${correct.filter(el => el === true).length} / ${correct.length}`;
-    this.resultService.saveOverallResult(correct.length, correct.filter(el => el === true).length).subscribe(() => {
+    const resultToSave: QuizResult = {
+      quizSize: correct.length,
+      correctAnswers: correct.filter(el => el === true).length,
+      selectionMode: true
+    };
+
+    this.resultService.saveOverallResult(resultToSave).subscribe(() => {
       this.loading = false;
-      console.log(correct);
     });
   }
 
