@@ -41,3 +41,11 @@
 .spinner {
     margin: 2em auto;
 }
+
+.info {
+    font-size: 2em;
+    color: red;
+    font-weight: 300;
+    text-align: center;
+    margin: 1em;
+}

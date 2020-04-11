@@ -18,6 +18,7 @@ export class ResultsComponent implements OnInit {
   translationResults: OverallResult;
   numberOfQuizes: {selectionQuiz: number, translationQuiz: number};
   loading = true;
+  enoughtElements = false;
 
   constructor(
     private resultService: ResultService
@@ -29,14 +30,22 @@ export class ResultsComponent implements OnInit {
 
   private getResults() {
     this.resultService.getOverallResult().subscribe(data => {
-      this.overallResult = data.reduce(this.reducer);
-      this.selectionResults = data.filter(el => el.selectionMode).reduce(this.reducer);
-      this.translationResults = data.filter(el => !el.selectionMode).reduce(this.reducer);
-      this.numberOfQuizes = {
-        selectionQuiz: data.filter(el => el.selectionMode).length,
-        translationQuiz: data.filter(el => !el.selectionMode).length
-      };
       this.loading = false;
+      if (data.length) {
+        this.overallResult = data.reduce(this.reducer);
+
+        this.selectionResults = data.filter(el => el.selectionMode).length ?
+          data.filter(el => el.selectionMode).reduce(this.reducer) : {quizSize: 0, correctAnswers: 0};
+
+        this.translationResults = data.filter(el => !el.selectionMode).length ?
+          data.filter(el => !el.selectionMode).reduce(this.reducer) : {quizSize: 0, correctAnswers: 0};
+
+        this.numberOfQuizes = {
+          selectionQuiz: data.filter(el => el.selectionMode).length,
+          translationQuiz: data.filter(el => !el.selectionMode).length
+        };
+        this.enoughtElements = true;
+      }
     });
   }
 
@@ -48,7 +57,7 @@ export class ResultsComponent implements OnInit {
   }
 
   countPercentages(result: OverallResult): string {
-    return Math.round((result.correctAnswers * 100) / result.quizSize) + '%';
+    return result.quizSize ? Math.round((result.correctAnswers * 100) / result.quizSize) + '%' : '0';
   }
 
 }

@@ -26,7 +26,7 @@ export class SelectionQuizComponent implements OnInit {
 
   ngOnInit() {
     this.getWordsAndGenerateQuiz(5, 3, 2);
-    this.results = new Array(5);
+    this.results = new Array(5).fill(undefined);
   }
 
   private getWordsAndGenerateQuiz(quizSize: number, questionsInEnglish: number, questionsInPolish: number) {
@@ -81,6 +81,10 @@ export class SelectionQuizComponent implements OnInit {
     // console.log(wordsToPractise);
     this.dataService.selectionResultSubject.next(this.results);
     this.router.navigate(['selection-result']);
+  }
+
+  disableButton(): boolean {
+    return this.results.every(el => el !== undefined);
   }
 
 }

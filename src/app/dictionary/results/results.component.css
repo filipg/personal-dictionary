@@ -32,3 +32,15 @@
     font-weight: 400;
     padding: 1rem;
 }
+
+.spinner {
+    margin: 0 auto;
+}
+
+.info {
+    font-size: 2em;
+    color: red;
+    font-weight: 300;
+    text-align: center;
+    margin: 2em;
+}

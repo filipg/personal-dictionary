@@ -1,27 +1,46 @@
-<div class="container" *ngIf="!loading">
-    <div class="quiz-overall">
-        Overall result: {{countPercentages(overallResult)}}
-    </div>
-    <div class="quizes">
-        <div class="quiz">
-            <div class="quiz-title">
-                Selection quiz: 
+<div class="container">
+
+    <ng-container *ngIf="loading; then spinner else content"></ng-container>
+
+    <ng-template #spinner>
+            <mat-spinner class="spinner"></mat-spinner>
+        </ng-template>
+
+    <ng-template #content>
+        <ng-container *ngIf="enoughtElements; then results else notEnoughElements"></ng-container>
+
+        <ng-template #results>
+            <div class="quiz-overall">
+                Overall result: {{countPercentages(overallResult)}}
             </div>
-            <div class="quiz-item">
-                Overall: {{countPercentages(selectionResults)}}
-                <br/>
-                Number of quizes: {{numberOfQuizes.selectionQuiz}}
+            <div class="quizes">
+                <div class="quiz">
+                    <div class="quiz-title">
+                        Selection quiz: 
+                    </div>
+                    <div class="quiz-item">
+                        Overall: {{countPercentages(selectionResults)}}
+                        <br/>
+                        Number of quizes: {{numberOfQuizes.selectionQuiz}}
+                    </div>
+                </div>
+                <div class="quiz">
+                    <div class="quiz-title">
+                        Translation quiz: 
+                    </div>
+                    <div class="quiz-item">
+                        Overall: {{countPercentages(translationResults)}}
+                        <br/>
+                        Number of quizes: {{numberOfQuizes.translationQuiz}}
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="quiz">
-            <div class="quiz-title">
-                Translation quiz: 
+        </ng-template>
+
+        <ng-template #notEnoughElements>
+            <div class="info" *ngIf="!enoughElements">
+                You have no results yet.
             </div>
-            <div class="quiz-item">
-                Overall: {{countPercentages(translationResults)}}
-                <br/>
-                Number of quizes: {{numberOfQuizes.translationQuiz}}
-            </div>
-        </div>
-    </div>
+        </ng-template>
+    </ng-template>
 </div>

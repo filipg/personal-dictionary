@@ -23,20 +23,14 @@ export class WordsComponent implements OnInit {
 
   ngOnInit() {
     this.getWords();
-    // this.getNewWords();
   }
 
   private getWords() {
     this.dataService.getWords().subscribe(data => {
       this.words = data;
       this.loading = false;
-      console.log(this.words);
     });
   }
-
-  // private getNewWords() {
-  //   this.dataService.subject.subscribe(data => this.getWords());
-  // }
 
   deleteWord(id: number | string, index: number) {
     this.dataService.deleteWord(id).subscribe(data => {
