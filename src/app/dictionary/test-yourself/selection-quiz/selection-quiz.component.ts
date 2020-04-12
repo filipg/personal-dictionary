@@ -45,7 +45,6 @@ export class SelectionQuizComponent implements OnInit {
         switchMap(() => this.dataService.getPolishWords(questionsInPolish)),
         tap(polishWords => this.createQuizItems(polishWords, questionsInPolish, false))
       ).subscribe(() => {
-        console.log(this.quizItems);
         this.loading = false;
       });
   }

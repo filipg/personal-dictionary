@@ -15,6 +15,10 @@ export class DataService {
   selectionResultSubject = new BehaviorSubject<SingleQuestionResult[]>(null);
   translationResultSubject = new BehaviorSubject<SingleTranslationQuestionResult[]>(null);
 
+  // to change
+  polishWords = ["dobrze", "stół", "krzesło", "tablet", "kubek", "długopis", "pióro", 'okej', 'jest'];
+
+
   constructor(
     private http: HttpClient,
     private authService: AuthService
@@ -63,8 +67,6 @@ export class DataService {
       );
   }
 
-  // #################
-  polishWords = ["dobrze", "stół", "krzesło", "tablet", "kubek", "długopis", "pióro", 'okej', 'jest'];
   getPolishWords(size: number = 2): Observable<QuizItem[]> {
     return of(this.polishWords).pipe(
       map(words => words.sort(() => 0.5 - Math.random()).slice(0, size * 3)),

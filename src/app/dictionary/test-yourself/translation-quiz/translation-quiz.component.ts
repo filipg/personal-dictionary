@@ -56,8 +56,6 @@ export class TranslationQuizComponent implements OnInit {
     });
     this.quizItems.forEach(() => this.addItem());
     this.loading = false;
-    console.log(this.form.value);
-    console.log(this.quizItems);
   }
 
   private addItem(): void {
