@@ -7,7 +7,7 @@
 
     <ng-template #content>
         <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!loading">
-            <div formArrayName="items" *ngFor="let item of form.get('items').controls; let i = index;">
+            <div formArrayName="items" *ngFor="let item of formData.controls; let i = index;">
                 <div [formGroupName]="i" class="quiz-item">
                     <span class="question">{{quizItems[i].question}} :</span>
                     <mat-form-field appearance="outline" class="answer-input">

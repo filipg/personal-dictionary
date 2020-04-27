@@ -87,4 +87,7 @@ export class TranslationQuizComponent implements OnInit {
      : String(items).normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
 
+  get formData() {
+    return <FormArray>this.form.get('items');
+  }
 }
