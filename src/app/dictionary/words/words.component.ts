@@ -6,7 +6,7 @@ import { Word } from 'src/app/interfaces/word.interface';
 @Component({
   selector: 'app-words',
   templateUrl: './words.component.html',
-  styleUrls: ['./words.component.css']
+  styleUrls: ['./words.component.scss']
 })
 export class WordsComponent implements OnInit {
 

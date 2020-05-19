@@ -7,7 +7,7 @@ import { ResultService } from 'src/app/services/result.service';
 @Component({
   selector: 'app-quiz-result',
   templateUrl: './selection-result.component.html',
-  styleUrls: ['./selection-result.component.css']
+  styleUrls: ['./selection-result.component.scss']
 })
 export class SelectionResultComponent implements OnInit {
 

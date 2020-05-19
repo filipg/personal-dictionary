@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-test-yourself',
   templateUrl: './test-yourself.component.html',
-  styleUrls: ['./test-yourself.component.css']
+  styleUrls: ['./test-yourself.component.scss']
 })
 export class TestYourselfComponent implements OnInit {
 

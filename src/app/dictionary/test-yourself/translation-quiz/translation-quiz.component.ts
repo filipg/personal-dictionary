@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-translation-quiz',
   templateUrl: './translation-quiz.component.html',
-  styleUrls: ['./translation-quiz.component.css']
+  styleUrls: ['./translation-quiz.component.scss']
 })
 export class TranslationQuizComponent implements OnInit {
 

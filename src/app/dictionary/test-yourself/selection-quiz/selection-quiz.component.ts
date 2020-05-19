@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-selection-quiz',
   templateUrl: './selection-quiz.component.html',
-  styleUrls: ['./selection-quiz.component.css']
+  styleUrls: ['./selection-quiz.component.scss']
 })
 export class SelectionQuizComponent implements OnInit {
 

@@ -7,7 +7,7 @@ import { ResultService } from 'src/app/services/result.service';
 @Component({
   selector: 'app-translation-result',
   templateUrl: './translation-result.component.html',
-  styleUrls: ['./translation-result.component.css']
+  styleUrls: ['./translation-result.component.scss']
 })
 export class TranslationResultComponent implements OnInit {
 
