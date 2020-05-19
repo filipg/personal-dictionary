@@ -1,3 +1,9 @@
+@import "./core/variables";
+
+.nav {
+  display: none;
+}
+
 .sidenav-container {
   height: 100%;
 }
@@ -27,8 +33,12 @@ mat-toolbar a {
   text-decoration: none;
 }
 
-@media(min-width: 768px) {
+@media(min-width: $break-point-768) {
   .sidenav {
     display: none;
+  }
+
+  .nav {
+    display: block;
   }
 }

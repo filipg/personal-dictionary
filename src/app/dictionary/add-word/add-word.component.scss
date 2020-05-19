@@ -1,27 +1,27 @@
 .container {
-    width: 100%;
     margin: 1em;
     padding: 1em;
 }
 
-form {
+.form {
     display: flex;
     align-items: center;
     justify-content: center;
-}
 
-.field-one {
-    width: 30%;
-    margin: .5em;
-}
+    &__field {
+        margin: .5em;
 
-.field-two {
-    width: calc(50% - 4em);
-    margin: .5em;
+        &--one {
+            width: 30%;
+        }
+
+        &--two {
+            width: calc(50% - 4em);
+        }
+    }
 }
 
 button {
     width: 20%;
     height: 4.5em;
-    // margin: 0 .5em 1.25em;
 }

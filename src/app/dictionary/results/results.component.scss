@@ -19,18 +19,18 @@
     display: inline-block;
     width: 47%;
     padding: 1rem;
-}
 
-.quiz-title {
-    font-size: 2.5rem;
-    font-weight: 400;
-    padding: 1rem;
-}
+    &-title {
+        font-size: 2.5rem;
+        font-weight: 400;
+        padding: 1rem;
+    }
 
-.quiz-item {
-    font-size: 2rem;
-    font-weight: 400;
-    padding: 1rem;
+    &-item {
+        font-size: 2rem;
+        font-weight: 400;
+        padding: 1rem;
+    }
 }
 
 .spinner {

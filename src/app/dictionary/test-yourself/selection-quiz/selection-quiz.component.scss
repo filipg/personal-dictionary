@@ -1,58 +1,78 @@
+@import "./core/variables";
+
 .container {
-    width: 100%;
-    margin: 3em auto;
+    margin: 3rem auto;
 }
 
 .quiz-item {
-    width: calc(50% - 2em);
+    width: 95%;
     min-height: 200px;
-    display: inline-block;
-    margin: .5em;
-    padding: .5em;
+    display: block;
+    margin: 1rem auto;
+    padding: .5rem;
     background-color: #f2f2f2;
-    border-radius: 1em;
+    border-radius: 1rem;
     vertical-align: middle;
+
+    @media (min-width: $break-point-768) {
+        margin: 1rem;
+        width: calc(50% - 4rem);
+        display: inline-block;
+    }
 }
 
-.radio-group {
-    display: flex;
-    flex-direction: column;
-    margin: .5em 0;
-}
+.radio {
 
-.radio-button {
-    margin: .5em;
+    &-group {
+        display: flex;
+        flex-direction: column;
+        margin: .5rem 0;
+    }
+
+    &-button {
+        margin: .5rem;
+    }
 }
 
 .question-label {
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-weight: 400;
 }
 
 .spinner {
-    margin: 2em auto;
+    margin: 2rem auto;
 }
 
-.button-container {
-    width: calc(50% - 2em);
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-}
+.button {
 
-.submit-button {
-    cursor: pointer;
-    width: 50%;
-    min-height: 100px;
-    bottom: 0;
-    padding: .5em;
-    background-color: #e6ffcc;
-    border-radius: 1em;
-    font-size: 1.5rem;
-    font-weight: 400;
-    display: inline-block;
-}
+    &-container {
+        width: 95%;
+        display: block;
+        text-align: center;
+        vertical-align: middle;
 
-.submit-button:hover {
-    background-color: #c1ff80;
+        @media (min-width: $break-point-768) {
+            margin: 1rem;
+            width: calc(50% - 4rem);
+            display: inline-block;
+        }
+    }
+
+    &-submit {
+        cursor: pointer;
+        width: 50%;
+        min-height: 100px;
+        bottom: 0;
+        padding: .5rem;
+        background-color: #e6ffcc;
+        border-radius: 1rem;
+        font-size: 1.5rem;
+        font-weight: 400;
+        display: inline-block;
+
+        &:hover {
+            background-color: #c1ff80;
+        }
+    }
+
 }

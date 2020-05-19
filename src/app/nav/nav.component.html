@@ -27,14 +27,16 @@
       </button>
       <span>personal-dictionary</span>
       <span class="spacer"></span>
-      <a routerLink="login" *ngIf="!isAuthenticated">Login</a>
-      <a routerLink="register" *ngIf="!isAuthenticated">Register</a>
-
-      <a routerLink="add-word" *ngIf="isAuthenticated">Add word</a>
-      <a routerLink="words" *ngIf="isAuthenticated">Words</a>
-      <a routerLink="test-yourself" *ngIf="isAuthenticated">Test yourself</a>
-      <a routerLink="results" *ngIf="isAuthenticated">Results</a>
-      <a routerLink="register" (click)="logout()" *ngIf="isAuthenticated">Logout</a>
+      <div class="nav">
+        <a routerLink="login" *ngIf="!isAuthenticated">Login</a>
+        <a routerLink="register" *ngIf="!isAuthenticated">Register</a>
+  
+        <a routerLink="add-word" *ngIf="isAuthenticated">Add word</a>
+        <a routerLink="words" *ngIf="isAuthenticated">Words</a>
+        <a routerLink="test-yourself" *ngIf="isAuthenticated">Test yourself</a>
+        <a routerLink="results" *ngIf="isAuthenticated">Results</a>
+        <a routerLink="register" (click)="logout()" *ngIf="isAuthenticated">Logout</a>
+      </div>
     </mat-toolbar>
     <!-- Add Content Here -->
     <ng-content></ng-content>

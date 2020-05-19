@@ -1,11 +1,11 @@
 <div class="container">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <mat-form-field appearance="outline" class="field-one">
+    <form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="form__field form__field--one">
           <mat-label>Word to translate</mat-label>
           <input matInput formControlName="wordInEnglish">
         </mat-form-field>
           
-        <mat-form-field appearance="outline" class="field-two">
+        <mat-form-field appearance="outline" class="form__field form__field--two">
           <mat-label>Translations</mat-label>
           <input matInput formControlName="translation">
         </mat-form-field>

@@ -1,6 +1,4 @@
-.container {
-    width: 100%;
-}
+@import "./core/variables";
 
 .overall-result {
     font-size: 2.5rem;
@@ -9,16 +7,22 @@
 }
 
 .quiz-item {
-    width: calc(50% - 2em);
+    width: 95%;
     min-height: 200px;
-    display: inline-block;
-    margin: .5em;
-    padding: .5em;
+    display: block;
+    margin: 1rem auto;
+    padding: .5rem;
     background-color: #f2f2f2;
     border-radius: 1em;
+
+    @media (min-width: $break-point-768) {
+        margin: 1rem;
+        width: calc(50% - 4rem);
+        display: inline-block;
+    }
 }
 
 .question-label {
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-weight: 400;
 }

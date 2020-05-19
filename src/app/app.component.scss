@@ -1,4 +1,10 @@
+@import "./core/variables";
+
 .container {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
+    
+    @media (min-width: $break-point-768) {
+        width: 80%;
+    }
 }

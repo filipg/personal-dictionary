@@ -1,25 +1,31 @@
-.container {
-    width: 70%;
-    padding: 2em;
-    margin: 2em auto;
-}
+@import "./core/mixins/base-form";
+@import "./core/variables";
 
-.field {
-  width: 100%;
-  padding: 1em;
-}
+.form {
+    @include baseFormMobile;
 
-button {
-  width: 100%;
-  padding: .5em;
+    &-field {
+      width: 100%;
+      padding: 1rem 0;
+    }
+
+    &-error {
+      color: red;
+      padding: .5em;
+      margin: .5em;
+    }
+
+    &-button {
+      width: 100%;
+      padding: .5rem;
+    }
+
+    @media (min-width: $break-point-768) {
+      @include baseFormDesktop;
+    }
 }
 
 .spinner {
   margin: 0 auto;
 }
 
-.error {
-  color: red;
-  padding: .5em;
-  margin: .5em;
-}
