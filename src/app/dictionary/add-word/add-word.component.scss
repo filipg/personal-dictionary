@@ -7,6 +7,7 @@
 form {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .field-one {
@@ -22,5 +23,5 @@ form {
 button {
     width: 20%;
     height: 4.5em;
-    margin: 0 .5em 1.25em;
+    // margin: 0 .5em 1.25em;
 }

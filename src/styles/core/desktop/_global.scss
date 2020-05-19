@@ -1,5 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@import "..//colors";
+@import "../typography";
+@import "../variables";
 
+
+
+// ############ GLOBALNE STYLE, KTORE BYLY W STYLES.SCSS
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; box-sizing: border-box}
 
