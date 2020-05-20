@@ -1,3 +1,5 @@
+@import "./core/variables";
+
 .overall-result {
     font-size: 2.5rem;
     font-weight: 400;
@@ -5,22 +7,34 @@
 }
 
 .item {
-    padding: 1em;
-    margin: 1em 0;
+    padding: 1rem;
+    margin: 1rem 0;
 }
 
 .question {
-    font-size: 1.5rem;
-    padding: 1em;
+    font-size: .8rem;
+
+    @media (min-width: $break-point-768) {
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
 }
 
 .users-answer {
-    padding: 1em;
-    margin: .5em;
+    margin: .3rem;
+
+    @media (min-width: $break-point-768) {
+        padding: 1rem;
+        margin: .5rem;
+    }
 }
 
 .options {
-    background-color: #b3ffb3;
-    padding: 1em;
-    margin: .5em;
+    background-color: $color-green-light-2;
+    margin: .3rem;
+
+    @media (min-width: $break-point-768) {
+        padding: 1rem;
+        margin: .5rem;
+    }
 }

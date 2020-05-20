@@ -1,11 +1,18 @@
+@import "./core/variables";
+
 .spinner {
-    margin: 2em auto;
+    margin: 2rem auto;
 }
 
 form {
-    width: 80%;
-    margin: 2em auto;
-    padding: 2em;
+    width: 100%;
+    margin: 2rem auto;
+
+    @media (min-width: $break-point-768) {
+        width: 80%;
+        margin: 2rem auto;
+        padding: 2rem;
+    }
 }
 
 .quiz-item {
@@ -15,10 +22,14 @@ form {
 }
 
 .question {
-    font-size: 1.5rem;
-    padding: 1em;
+    font-size: .8rem;
     width: 25%;
     text-align: center;
+
+    @media (min-width: $break-point-768) {
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
 }
 
 .answer-input {
@@ -31,7 +42,11 @@ form {
 }
 
 button {
-    width: 20%;
-    min-height: 5em;
-    margin: 1em 0;
+    width: 100%;
+    min-height: 5rem;
+    margin: 1rem 0;
+
+    @media (min-width: $break-point-768) {
+        width: 20%;
+    }
 }

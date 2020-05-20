@@ -1,6 +1,12 @@
+@import "./core/variables";
+
 .container {
-    width: 90%;
-    margin: 2em auto;
+    width: 95%;
+    margin: 2rem auto;
+
+    @media (min-width: $break-point-768) {
+        width: 90%;
+    }
 }
 
 .quiz-overall {
@@ -12,12 +18,16 @@
 .quizes {
     display: flex;
     justify-content: space-between;
-    margin: 1em 0;
+    margin: 1rem 0;
+    flex-direction: column;
+
+    @media (min-width: $break-point-768) {
+        flex-direction: row;
+    }
 }
 
 .quiz {
-    display: inline-block;
-    width: 47%;
+    width: 100%;
     padding: 1rem;
 
     &-title {
@@ -31,6 +41,10 @@
         font-weight: 400;
         padding: 1rem;
     }
+
+    @media (min-width: $break-point-768) {
+        width: 47%;
+    }
 }
 
 .spinner {
@@ -38,9 +52,9 @@
 }
 
 .info {
-    font-size: 2em;
-    color: red;
+    font-size: 2rem;
+    color: $color-error;
     font-weight: 300;
     text-align: center;
-    margin: 2em;
+    margin: 2rem;
 }

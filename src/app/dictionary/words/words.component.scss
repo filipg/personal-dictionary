@@ -1,14 +1,20 @@
+@import "./core/variables";
+
 .container {
-    width: 100%;
     min-height: 730px;
-    padding: 1em;
-    margin: 1em auto;
+    margin: 1rem auto;
     position: relative;
 }
 
 .wordToTranslate {
-    font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+
+
+    @media (min-width: $break-point-768) {
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
 }
 
 .list-item:hover {
@@ -17,20 +23,20 @@
 
 .spacer {
     flex: 1 1 auto;
-  }
+}
 
-  .icon {
+.icon {
       cursor: pointer;
       opacity: 0;
-  }
 
-  .list-item:hover .icon {
+      &:hover {
+        transform: scale(1.5);
+      }
+}
+
+.list-item:hover .icon {
     opacity: 1;
 } 
-
-.icon:hover {
-    transform: scale(1.5);
-}
 
 .paginator {
     position: absolute;
@@ -39,13 +45,13 @@
 }
 
 .spinner {
-    margin: 2em auto;
+    margin: 2rem auto;
 }
 
 .info {
-    font-size: 2em;
-    color: red;
+    font-size: 2rem;
+    color: $color-error;
     font-weight: 300;
     text-align: center;
-    margin: 1em;
+    margin: 1rem;
 }
