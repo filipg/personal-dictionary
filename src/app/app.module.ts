@@ -9,33 +9,15 @@ import { AppMaterialModule } from './app-material/app-material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
 import { NavComponent } from './nav/nav.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './auth/auth-interceptor';
-import { AddWordComponent } from './dictionary/add-word/add-word.component';
-import { WordsComponent } from './dictionary/words/words.component';
-import { TestYourselfComponent } from './dictionary/test-yourself/test-yourself.component';
-import { ResultsComponent } from './dictionary/results/results.component';
-import { SelectionQuizComponent } from './dictionary/test-yourself/selection-quiz/selection-quiz.component';
-import { TranslationQuizComponent } from './dictionary/test-yourself/translation-quiz/translation-quiz.component';
-import { SelectionResultComponent } from './dictionary/test-yourself/selection-quiz/selection-result/selection-result.component';
-import { TranslationResultComponent } from './dictionary/test-yourself/translation-quiz/translation-result/translation-result.component';
+import { AuthModule } from './auth/auth.module';
+import { DictionaryModule } from './dictionary/dictionary.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    LoginComponent,
-    RegisterComponent,
-    AddWordComponent,
-    WordsComponent,
-    TestYourselfComponent,
-    ResultsComponent,
-    SelectionQuizComponent,
-    TranslationQuizComponent,
-    SelectionResultComponent,
-    TranslationResultComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +26,11 @@ import { TranslationResultComponent } from './dictionary/test-yourself/translati
     AppMaterialModule,
     HttpClientModule,
     LayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+    // feature modules:
+    AuthModule,
+    DictionaryModule
   ],
   providers: [
     {

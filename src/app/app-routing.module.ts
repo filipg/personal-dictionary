@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AddWordComponent } from './dictionary/add-word/add-word.component';
 import { WordsComponent } from './dictionary/words/words.component';
@@ -11,6 +9,8 @@ import { SelectionQuizComponent } from './dictionary/test-yourself/selection-qui
 import { TranslationQuizComponent } from './dictionary/test-yourself/translation-quiz/translation-quiz.component';
 import { SelectionResultComponent } from './dictionary/test-yourself/selection-quiz/selection-result/selection-result.component';
 import { TranslationResultComponent } from './dictionary/test-yourself/translation-quiz/translation-result/translation-result.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
